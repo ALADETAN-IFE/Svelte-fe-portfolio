@@ -68,8 +68,7 @@
 					<strong class="font-semibold text-text-primary">React</strong>
 					for web, and <strong class="font-semibold text-text-primary">Node.js</strong>
 					for backend services. Recently, I've been diving deep into
-					<strong class="font-semibold text-text-primary">DevOps</strong> - configuring Linux servers,
-					setting up Nginx reverse proxies, SSL certificates, and CI/CD pipelines.
+					<strong class="font-semibold text-text-primary">DevOps</strong> - writing CI/CD pipelines.
 				</p>
 				<p class="mb-5 text-base leading-relaxed text-text-secondary">
 					I'm currently participating in the <strong class="font-semibold text-text-primary"
@@ -125,7 +124,7 @@
 					<div>
 						<h3 class="mb-1 text-base font-bold text-text-primary">DevOps</h3>
 						<p class="m-0 text-[0.85rem] text-text-muted">
-							Linux, Nginx, SSL, CI/CD - infrastructure that scales
+							CI/CD - automating deployments and infrastructure management
 						</p>
 					</div>
 				</div>
