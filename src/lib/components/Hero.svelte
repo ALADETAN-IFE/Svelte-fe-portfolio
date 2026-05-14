@@ -7,6 +7,7 @@
 	import X from './icons/X.svelte';
 	import Instagram from './icons/Instagram.svelte';
 	import LinkedIn from './icons/LinkedIn.svelte';
+	import { resolve } from '$app/paths';
 	import { browser } from '$app/environment';
 
 	let canvas: HTMLCanvasElement;
@@ -224,7 +225,7 @@
 
 		<div class="mb-12 flex flex-wrap justify-center gap-4">
 			<a
-				href="#projects"
+				href={resolve('/#projects')}
 				class="hero-cta inline-flex cursor-pointer items-center gap-2 rounded-xl border border-accent bg-accent px-7 py-3 text-[0.95rem] font-semibold text-white no-underline transition-all duration-300 hover:-translate-y-0.5 hover:bg-accent-light hover:shadow-[0_8px_25px_var(--color-accent-glow)]"
 				style="opacity: 0;"
 			>
@@ -232,7 +233,7 @@
 				<ArrowRight size={18} />
 			</a>
 			<a
-				href="https://www.ifecodes.xyz"
+				href={resolve('https://www.ifecodes.xyz')}
 				class="hero-cta inline-flex cursor-pointer items-center gap-2 rounded-xl border border-accent bg-transparent px-7 py-3 text-[0.95rem] font-semibold text-accent-light no-underline transition-all duration-300 hover:-translate-y-0.5 hover:bg-accent/8"
 				style="opacity: 0;"
 				target="_blank"
@@ -244,15 +245,14 @@
 		</div>
 
 		<div class="flex justify-center gap-4">
-			{#each socialLinks as link}
+			{#each socialLinks as link (link.label)}
 				<a
-					href={link.href}
+					href={resolve(link.href)}
 					class="hero-social flex items-center justify-center rounded-xl border border-border p-2.5 text-text-muted transition-all duration-300 hover:-translate-y-0.5 hover:border-accent hover:text-accent-light hover:shadow-[0_4px_15px_var(--color-accent-glow)]"
 					style="opacity: 0;"
 					target="_blank"
 					rel="noopener noreferrer"
 					aria-label={link.label}
-					key={link.label}
 				>
 					{#if link.icon === 'github'}
 						<Github size={22} />

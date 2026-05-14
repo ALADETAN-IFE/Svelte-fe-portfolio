@@ -85,7 +85,7 @@
 			<div class="h-px flex-1 bg-border"></div>
 		</div>
 
-		<div class="mx-auto max-w-[600px]">
+		<div class="mx-auto max-w-150">
 			<div class="mb-10">
 				<p class="text-[1.05rem] leading-relaxed text-text-secondary">
 					Have a project in mind, a question, or just want to say hi? My inbox is always open. I'll
@@ -149,7 +149,7 @@
 					<textarea
 						id="contact-message"
 						bind:value={message}
-						class="min-h-[120px] resize-y rounded-xl border bg-bg-card p-[0.85rem_1rem] font-sans text-[0.95rem] text-text-primary transition-all duration-300 outline-none placeholder:text-text-muted focus:border-accent focus:ring-3 focus:ring-accent/15 {errors.message
+						class="min-h-30 resize-y rounded-xl border bg-bg-card p-[0.85rem_1rem] font-sans text-[0.95rem] text-text-primary transition-all duration-300 outline-none placeholder:text-text-muted focus:border-accent focus:ring-3 focus:ring-accent/15 {errors.message
 							? 'border-error ring-error/15'
 							: 'border-border'}"
 						placeholder="What's on your mind?"

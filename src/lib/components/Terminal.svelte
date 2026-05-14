@@ -190,12 +190,12 @@
 					bind:this={terminalEl}
 					onclick={focusInput}
 				>
-					{#each lines as line}
+					{#each lines as line, i (i)}
 						{#if line.type === 'input'}
 							<div
 								class="flex items-start font-mono text-[0.85rem] leading-loose whitespace-pre text-[#e0e0f0]"
 							>
-								<ChevronRight size={14} class="mt-[3px] mr-2 shrink-0 text-accent-light" />
+								<ChevronRight size={14} class="mt-0.75 mr-2 shrink-0 text-accent-light" />
 								<span class="text-[#e0e0f0]">{line.text}</span>
 							</div>
 						{:else}

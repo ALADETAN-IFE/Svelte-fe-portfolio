@@ -4,10 +4,10 @@
 	import Rocket from '@lucide/svelte/icons/rocket';
 	import Wrench from '@lucide/svelte/icons/wrench';
 	import Cog from '@lucide/svelte/icons/cog';
-	import Smartphone from '@lucide/svelte/icons/smartphone';
 	import Star from '@lucide/svelte/icons/star';
 	import Github from './icons/Github.svelte';
 	import ExternalLink from '@lucide/svelte/icons/external-link';
+	import { resolve } from '$app/paths';
 	import type { Project } from '$lib/types/project';
 
 	interface Props {
@@ -77,7 +77,7 @@
 		</div>
 
 		<div class="mb-10 flex flex-wrap gap-2" role="tablist" aria-label="Filter projects by type">
-			{#each filters as filter}
+			{#each filters as filter (filter)}
 				<button
 					class="cursor-pointer rounded-lg border px-5 py-2 font-sans text-sm font-medium transition-all duration-200 {activeFilter ===
 					filter
@@ -105,7 +105,7 @@
 						style="opacity: 0;"
 					>
 						{#if project.preview}
-							<div class="relative h-[180px] overflow-hidden bg-bg-tertiary">
+							<div class="relative h-45 overflow-hidden bg-bg-tertiary">
 								<img
 									src={project.preview}
 									alt="Preview of {project.title}"
@@ -121,14 +121,11 @@
 							</div>
 						{:else}
 							<div
-								class="relative flex h-[180px] items-center justify-center overflow-hidden bg-bg-tertiary"
+								class="relative flex h-45 items-center justify-center overflow-hidden bg-bg-tertiary"
 							>
 								<div class="text-accent-light opacity-40">
-									<svelte:component
-										this={getProjectTypeIcon(project.type)}
-										size={46}
-										strokeWidth={1.8}
-									/>
+									{@const ProjectIcon = getProjectTypeIcon(project.type)}
+									<ProjectIcon size={46} strokeWidth={1.8} />
 								</div>
 								{#if project.featured}
 									<span
@@ -155,7 +152,7 @@
 							</p>
 
 							<div class="mb-4 flex flex-wrap gap-1.5">
-								{#each project.tech.slice(0, 5) as tech}
+								{#each project.tech.slice(0, 5) as tech (tech)}
 									<span
 										class="rounded-md bg-accent/8 px-2.5 py-1 font-mono text-[0.7rem] font-medium text-accent-light"
 										>{tech}</span
@@ -172,7 +169,7 @@
 							<div class="mt-auto flex gap-3">
 								{#if project.githubUrl}
 									<a
-										href={project.githubUrl}
+										href={resolve(project.githubUrl)}
 										target="_blank"
 										rel="noopener noreferrer"
 										class="flex items-center gap-1.5 rounded-lg border border-border px-4 py-2 text-[0.8rem] font-medium text-text-secondary no-underline transition-all duration-200 hover:border-accent hover:text-accent-light"
@@ -184,7 +181,7 @@
 								{/if}
 								{#if project.liveUrl}
 									<a
-										href={project.liveUrl}
+										href={resolve(project.liveUrl)}
 										target="_blank"
 										rel="noopener noreferrer"
 										class="flex items-center gap-1.5 rounded-lg border border-accent bg-accent px-4 py-2 text-[0.8rem] font-medium text-white no-underline shadow-sm transition-all duration-200 hover:bg-accent-light"

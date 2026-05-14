@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { resolve } from '$app/paths';
+
 	const currentYear = new Date().getFullYear();
 
 	const socialLinks = [
@@ -16,9 +18,9 @@
 <footer class="border-t border-border p-[2.5rem_1.5rem]" aria-label="Footer">
 	<div class="mx-auto flex max-w-250 flex-col items-center gap-5">
 		<div class="flex flex-wrap justify-center gap-6">
-			{#each socialLinks as link}
+			{#each socialLinks as link (link.label)}
 				<a
-					href={link.href}
+					href={resolve(link.href)}
 					target="_blank"
 					rel="noopener noreferrer"
 					class="text-sm font-medium text-text-muted no-underline transition-colors duration-200 hover:text-accent-light"
@@ -27,7 +29,7 @@
 			{/each}
 		</div>
 
-		<div class="h-px w-[60px] bg-border"></div>
+		<div class="h-px w-15 bg-border"></div>
 
 		<p class="text-center font-mono text-[0.8rem] text-text-muted">
 			Built with <span class="font-semibold text-accent-light">SvelteKit</span> by

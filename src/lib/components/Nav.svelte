@@ -3,17 +3,18 @@
 	import { onMount } from 'svelte';
 	import Sun from './icons/Sun.svelte';
 	import Moon from './icons/Moon.svelte';
+	import { resolve } from '$app/paths';
 
 	let scrolled = $state(false);
 	let mobileMenuOpen = $state(false);
 	let activeSection = $state('');
 
 	const navLinks = [
-		{ label: 'About', href: '#about' },
-		{ label: 'Skills', href: '#skills' },
-		{ label: 'Projects', href: '#projects' },
-		{ label: 'Terminal', href: '#terminal' },
-		{ label: 'Contact', href: '#contact' }
+		{ label: 'About', href: '/#about' },
+		{ label: 'Skills', href: '/#skills' },
+		{ label: 'Projects', href: '/#projects' },
+		{ label: 'Terminal', href: '/#terminal' },
+		{ label: 'Contact', href: '/#contact' }
 	];
 
 	onMount(() => {
@@ -51,16 +52,16 @@
 </script>
 
 <nav
-	class="fixed top-0 right-0 left-0 z-[100] px-6 transition-all duration-300 ease-in-out {scrolled
+	class="fixed top-0 right-0 left-0 z-100 px-6 transition-all duration-300 ease-in-out {scrolled
 		? 'border-b border-border bg-bg-primary/85 py-3 glass'
 		: 'py-4'}"
 	aria-label="Main navigation"
 	id="main-nav"
 >
-	<div class="mx-auto flex max-w-[1200px] items-center justify-between">
+	<div class="mx-auto flex max-w-300 items-center justify-between">
 		<a
-			href="#hero"
-			class="flex gap-[2px] font-mono text-xl font-bold text-text-primary no-underline transition-colors duration-200"
+			href={resolve('/#hero')}
+			class="flex gap-0.5 font-mono text-xl font-bold text-text-primary no-underline transition-colors duration-200"
 			aria-label="IfeCodes Home"
 		>
 			<span class="text-accent">&lt;</span>
@@ -69,10 +70,10 @@
 		</a>
 
 		<div class="hidden gap-8 md:flex" role="menubar">
-			{#each navLinks as link}
+			{#each navLinks as link (link.label)}
 				<a
-					href={link.href}
-					class="relative text-sm font-medium text-text-secondary no-underline transition-colors duration-200 after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:bg-accent after:transition-[width] after:duration-300 after:content-[''] hover:text-accent-light {activeSection ===
+					href={resolve(link.href)}
+					class="relative text-sm font-medium text-text-secondary no-underline transition-colors duration-200 after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:bg-accent after:transition-[width] after:duration-300 after:content-[''] hover:text-accent-light {activeSection ===
 					link.href.substring(1)
 						? 'text-accent-light after:w-full'
 						: 'after:w-0 hover:after:w-full'}"
@@ -102,20 +103,20 @@
 				aria-expanded={mobileMenuOpen}
 				id="mobile-menu-btn"
 			>
-				<span class="flex w-[22px] flex-col gap-[5px]">
+				<span class="flex w-5.5 flex-col gap-1.25">
 					<span
-						class="block h-[2px] rounded-[1px] bg-text-primary transition-all duration-300 ease-in-out {mobileMenuOpen
-							? 'translate-x-[5px] translate-y-[5px] rotate-45'
+						class="block h-0.5 rounded-[1px] bg-text-primary transition-all duration-300 ease-in-out {mobileMenuOpen
+							? 'translate-x-1.25 translate-y-1.25 rotate-45'
 							: ''}"
 					></span>
 					<span
-						class="block h-[2px] rounded-[1px] bg-text-primary transition-all duration-300 ease-in-out {mobileMenuOpen
+						class="block h-0.5 rounded-[1px] bg-text-primary transition-all duration-300 ease-in-out {mobileMenuOpen
 							? 'opacity-0'
 							: ''}"
 					></span>
 					<span
-						class="block h-[2px] rounded-[1px] bg-text-primary transition-all duration-300 ease-in-out {mobileMenuOpen
-							? 'translate-x-[5px] -translate-y-[5px] -rotate-45'
+						class="block h-0.5 rounded-[1px] bg-text-primary transition-all duration-300 ease-in-out {mobileMenuOpen
+							? 'translate-x-1.25 -translate-y-1.25 -rotate-45'
 							: ''}"
 					></span>
 				</span>
@@ -125,9 +126,9 @@
 
 	{#if mobileMenuOpen}
 		<div class="mt-3 flex flex-col gap-2 border-t border-border py-4 md:hidden" role="menu">
-			{#each navLinks as link}
+			{#each navLinks as link (link.label)}
 				<a
-					href={link.href}
+					href={resolve(link.href)}
 					class="py-3 text-base font-medium text-text-secondary no-underline transition-colors duration-200 hover:text-accent-light {activeSection ===
 					link.href.substring(1)
 						? 'text-accent-light'

@@ -3,7 +3,6 @@
 	import Nav from '$lib/components/Nav.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 	import { theme } from '$lib/stores/theme';
-	import { browser } from '$app/environment';
 	import { onMount } from 'svelte';
 
 	let { children } = $props();

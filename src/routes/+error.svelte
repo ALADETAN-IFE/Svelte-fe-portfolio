@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/state';
+	import { resolve } from '$app/paths';
 </script>
 
 <div class="flex min-h-[calc(100vh-200px)] flex-col items-center justify-center px-4 text-center">
@@ -10,7 +11,7 @@
 		{page.error?.message || 'Page Not Found'}
 	</p>
 	<a
-		href="/"
+		href={resolve('/')}
 		class="rounded-lg bg-accent px-6 py-3 font-semibold text-white shadow-lg transition-colors hover:bg-accent-light hover:shadow-[0_12px_30px_rgba(20,184,166,0.3)]"
 	>
 		Go back home

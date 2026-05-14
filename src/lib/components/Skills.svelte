@@ -73,9 +73,9 @@
 		</div>
 
 		<div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
-			{#each skillCategories as category}
+			{#each skillCategories as category (category.title)}
 				<div
-					class="skill-category rounded-[16px] border border-border bg-bg-card p-7 transition-all duration-300 hover:-translate-y-1 hover:border-accent hover:shadow-[0_8px_30px_var(--color-accent-glow)]"
+					class="skill-category rounded-2xl border border-border bg-bg-card p-7 transition-all duration-300 hover:-translate-y-1 hover:border-accent hover:shadow-[0_8px_30px_var(--color-accent-glow)]"
 					style="opacity: 0;"
 				>
 					<div class="mb-5 flex items-center gap-3">
@@ -95,7 +95,7 @@
 						<h3 class="text-[1.15rem] font-bold text-text-primary">{category.title}</h3>
 					</div>
 					<div class="flex flex-wrap gap-2">
-						{#each category.skills as skill}
+						{#each category.skills as skill (skill.name)}
 							<div
 								class="skill-item flex items-center gap-[0.4rem] rounded-lg bg-bg-tertiary px-[0.85rem] py-2 text-[0.85rem] font-medium text-text-secondary transition-all duration-200 hover:-translate-y-0.5 hover:bg-accent/8 hover:text-accent-light"
 								style="opacity: 0;"
