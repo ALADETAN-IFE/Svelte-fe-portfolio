@@ -15,7 +15,7 @@ export const load: PageServerLoad = async () => {
 	try {
 		const response = await fetch(API_URL, {
 			headers: {
-				'Accept': 'application/json',
+				Accept: 'application/json',
 				'User-Agent': 'IfeCodes-Portfolio/1.0 (SvelteKit)'
 			}
 		});

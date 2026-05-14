@@ -5,18 +5,22 @@
 	import Projects from '$lib/components/Projects.svelte';
 	import Terminal from '$lib/components/Terminal.svelte';
 	import Contact from '$lib/components/Contact.svelte';
+	import CircleAlert from '@lucide/svelte/icons/circle-alert';
 
 	let { data } = $props();
 </script>
 
 <svelte:head>
-	<title>IfeCodes — Full-Stack & Mobile Developer Portfolio</title>
-	<meta name="description" content="Hi, I'm Ife — a Full-Stack & Mobile Developer. I asked how websites work. Now I build them. Explore my projects, skills, and get in touch." />
-	<meta property="og:title" content="IfeCodes — Full-Stack & Mobile Developer Portfolio" />
+	<title>IfeCodes - Full-Stack & Mobile Developer Portfolio</title>
+	<meta
+		name="description"
+		content="Hi, I'm Ife - a Full-Stack & Mobile Developer. I asked how websites work. Now I build them. Explore my projects, skills, and get in touch."
+	/>
+	<meta property="og:title" content="IfeCodes - Full-Stack & Mobile Developer Portfolio" />
 	<meta property="og:description" content="I asked how websites work. Now I build them." />
 	<meta property="og:type" content="website" />
 	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:title" content="IfeCodes — Full-Stack & Mobile Developer" />
+	<meta name="twitter:title" content="IfeCodes - Full-Stack & Mobile Developer" />
 	<meta name="twitter:description" content="I asked how websites work. Now I build them." />
 </svelte:head>
 
@@ -26,12 +30,17 @@
 
 {#if data.error}
 	<section id="projects" class="section-padding" aria-label="Projects section">
-		<div class="error-container">
-			<div class="error-card">
-				<span class="error-icon">⚠️</span>
-				<h3>Couldn't load projects</h3>
-				<p>{data.error}</p>
-				<button onclick={() => window.location.reload()} class="retry-btn">
+		<div class="mx-auto max-w-[500px] text-center">
+			<div
+				class="flex flex-col items-center gap-4 rounded-2xl border border-border bg-bg-card p-[3rem_2rem]"
+			>
+				<CircleAlert size={40} class="text-accent" />
+				<h3 class="text-[1.25rem] font-bold text-text-primary">Couldn't load projects</h3>
+				<p class="text-[0.95rem] text-text-muted">{data.error}</p>
+				<button
+					onclick={() => window.location.reload()}
+					class="cursor-pointer rounded-lg border-none bg-accent px-6 py-2.5 font-sans text-[0.9rem] font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-accent-light"
+				>
 					Try Again
 				</button>
 			</div>
@@ -43,67 +52,3 @@
 
 <Terminal projects={data.projects} />
 <Contact />
-
-<style>
-	.error-container {
-		max-width: 500px;
-		margin: 0 auto;
-		text-align: center;
-	}
-
-	.error-card {
-		padding: 3rem 2rem;
-		background: var(--color-bg-card);
-		border: 1px solid var(--color-border);
-		border-radius: 16px;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		gap: 1rem;
-	}
-
-	:global([data-theme='light']) .error-card {
-		background: var(--color-light-bg-card);
-		border-color: var(--color-light-border);
-	}
-
-	.error-icon {
-		font-size: 2.5rem;
-	}
-
-	.error-card h3 {
-		font-size: 1.25rem;
-		font-weight: 700;
-	}
-
-	:global([data-theme='light']) .error-card h3 {
-		color: var(--color-light-text-primary);
-	}
-
-	.error-card p {
-		color: var(--color-text-muted);
-		font-size: 0.95rem;
-	}
-
-	:global([data-theme='light']) .error-card p {
-		color: var(--color-light-text-muted);
-	}
-
-	.retry-btn {
-		padding: 0.7rem 1.5rem;
-		background: var(--color-accent);
-		color: white;
-		border: none;
-		border-radius: 8px;
-		font-size: 0.9rem;
-		font-weight: 600;
-		cursor: pointer;
-		transition: all 0.2s;
-		font-family: var(--font-sans);
-	}
-
-	.retry-btn:hover {
-		background: var(--color-accent-light);
-		transform: translateY(-2px);
-	}
-</style>

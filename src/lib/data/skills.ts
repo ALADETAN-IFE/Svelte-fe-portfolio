@@ -12,47 +12,42 @@ export interface SkillCategory {
 export const skillCategories: SkillCategory[] = [
 	{
 		title: 'Frontend',
-		icon: '🎨',
+		icon: 'palette',
 		skills: [
-			{ name: 'React', icon: '⚛️' },
-			{ name: 'Next.js', icon: '▲' },
-			{ name: 'Svelte', icon: '🔥' },
-			{ name: 'TypeScript', icon: '📘' },
-			{ name: 'TailwindCSS', icon: '💨' },
-			{ name: 'HTML/CSS', icon: '🌐' }
+			{ name: 'HTML/CSS', icon: 'globe' },
+			{ name: 'TailwindCSS', icon: 'wind' },
+			{ name: 'TypeScript', icon: 'book' },
+			{ name: 'React', icon: 'atom' },
+			{ name: 'Next.js', icon: 'triangle' },
+			{ name: 'Vue.js', icon: 'triangle' },
+			{ name: 'Svelte', icon: 'flame' }
 		]
 	},
 	{
 		title: 'Mobile',
-		icon: '📱',
+		icon: 'phone',
 		skills: [
-			{ name: 'React Native', icon: '📲' },
-			{ name: 'Expo', icon: '🚀' },
-			{ name: 'NativeWind', icon: '💨' }
+			{ name: 'React Native', icon: 'phone2' },
+			{ name: 'Expo', icon: 'rocket' },
+			{ name: 'NativeWind', icon: 'wind' }
 		]
 	},
 	{
 		title: 'Backend',
-		icon: '⚙️',
+		icon: 'cog',
 		skills: [
-			{ name: 'Node.js', icon: '🟢' },
-			{ name: 'Express.js', icon: '🛤️' },
-			{ name: 'PostgreSQL', icon: '🐘' },
-			{ name: 'MongoDB', icon: '🍃' },
-			{ name: 'Prisma', icon: '💎' },
-			{ name: 'Supabase', icon: '⚡' }
+			{ name: 'Node.js', icon: 'circle' },
+			{ name: 'Express.js', icon: 'git' },
+			{ name: 'Next.js', icon: 'triangle' },
+			{ name: 'PostgreSQL', icon: 'database' },
+			{ name: 'MongoDB', icon: 'leaf' },
+			{ name: 'Prisma', icon: 'gem' },
+			{ name: 'Supabase', icon: 'zap' }
 		]
 	},
 	{
 		title: 'DevOps',
-		icon: '🛠️',
-		skills: [
-			{ name: 'Linux', icon: '🐧' },
-			{ name: 'Nginx', icon: '🌊' },
-			{ name: 'SSL/TLS', icon: '🔒' },
-			{ name: 'CI/CD', icon: '🔄' },
-			{ name: 'Docker', icon: '🐳' },
-			{ name: 'Git', icon: '📦' }
-		]
+		icon: 'wrench',
+		skills: [{ name: 'CI/CD', icon: 'rotate' }]
 	}
 ];

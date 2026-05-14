@@ -14,8 +14,11 @@
 </script>
 
 <svelte:head>
-	<title>IfeCodes — Full-Stack & Mobile Developer</title>
-	<meta name="description" content="IfeCodes — I asked how websites work. Now I build them. Full-Stack & Mobile Developer portfolio." />
+	<title>IfeCodes - Full-Stack & Mobile Developer</title>
+	<meta
+		name="description"
+		content="IfeCodes - I asked how websites work. Now I build them. Full-Stack & Mobile Developer portfolio."
+	/>
 </svelte:head>
 
 <div class="app-wrapper" data-theme={$theme}>

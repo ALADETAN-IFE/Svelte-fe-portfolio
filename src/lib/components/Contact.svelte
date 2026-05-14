@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import CircleCheck from '@lucide/svelte/icons/circle-check';
+	import Send from './icons/Send.svelte';
 
 	let name = $state('');
 	let email = $state('');
@@ -16,10 +18,12 @@
 		else if (name.trim().length < 2) newErrors.name = 'Name must be at least 2 characters';
 
 		if (!email.trim()) newErrors.email = 'Please enter your email';
-		else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) newErrors.email = 'Please enter a valid email address';
+		else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
+			newErrors.email = 'Please enter a valid email address';
 
 		if (!message.trim()) newErrors.message = 'Please enter a message';
-		else if (message.trim().length < 10) newErrors.message = 'Message must be at least 10 characters';
+		else if (message.trim().length < 10)
+			newErrors.message = 'Message must be at least 10 characters';
 
 		errors = newErrors;
 		return Object.keys(newErrors).length === 0;
@@ -33,7 +37,9 @@
 
 		// mailto fallback
 		const subject = encodeURIComponent(`Portfolio Contact from ${name.trim()}`);
-		const body = encodeURIComponent(`Name: ${name.trim()}\nEmail: ${email.trim()}\n\nMessage:\n${message.trim()}`);
+		const body = encodeURIComponent(
+			`Name: ${name.trim()}\nEmail: ${email.trim()}\n\nMessage:\n${message.trim()}`
+		);
 		window.location.href = `mailto:fortuneifealadetan01@gmail.com?subject=${subject}&body=${body}`;
 
 		setTimeout(() => {
@@ -54,7 +60,8 @@
 		const { ScrollTrigger } = await import('gsap/ScrollTrigger');
 		gsap.registerPlugin(ScrollTrigger);
 
-		gsap.fromTo('.contact-form',
+		gsap.fromTo(
+			'.contact-form',
 			{ opacity: 0, y: 50 },
 			{
 				opacity: 1,
@@ -70,248 +77,103 @@
 	});
 </script>
 
-<section id="contact" class="contact section-padding" aria-label="Contact section">
-	<div class="contact-inner">
-		<div class="section-header">
-			<span class="section-number">05.</span>
-			<h2 class="section-title">Get In Touch</h2>
-			<div class="section-line"></div>
+<section id="contact" class="section-padding" aria-label="Contact section">
+	<div class="mx-auto max-w-250">
+		<div class="mb-10 flex items-center justify-start gap-3">
+			<span class="shrink-0 font-mono text-sm font-semibold text-accent">05.</span>
+			<h2 class="text-[clamp(1.5rem,4vw,2rem)] font-extrabold text-text-primary">Get In Touch</h2>
+			<div class="h-px flex-1 bg-border"></div>
 		</div>
 
-		<div class="contact-intro">
-			<p>Have a project in mind, a question, or just want to say hi? My inbox is always open. I'll do my best to get back to you!</p>
-		</div>
+		<div class="mx-auto max-w-[600px]">
+			<div class="mb-10">
+				<p class="text-[1.05rem] leading-relaxed text-text-secondary">
+					Have a project in mind, a question, or just want to say hi? My inbox is always open. I'll
+					do my best to get back to you!
+				</p>
+			</div>
 
-		<form class="contact-form" style="opacity: 0;" onsubmit={handleSubmit} novalidate>
-			{#if submitted}
-				<div class="success-msg">
-					<span class="success-icon">✅</span>
-					<p>Message sent! I'll get back to you soon.</p>
+			<form
+				class="contact-form flex flex-col gap-6"
+				style="opacity: 0;"
+				onsubmit={handleSubmit}
+				novalidate
+			>
+				{#if submitted}
+					<div
+						class="flex items-center gap-3 rounded-xl border border-success/30 bg-success/10 p-5 font-medium text-success"
+					>
+						<CircleCheck size={20} class="shrink-0" />
+						<p>Message sent! I'll get back to you soon.</p>
+					</div>
+				{/if}
+
+				<div class="flex flex-col gap-1.5">
+					<label for="contact-name" class="text-sm font-semibold text-text-secondary">Name</label>
+					<input
+						type="text"
+						id="contact-name"
+						bind:value={name}
+						class="rounded-xl border bg-bg-card p-[0.85rem_1rem] font-sans text-[0.95rem] text-text-primary transition-all duration-300 outline-none placeholder:text-text-muted focus:border-accent focus:ring-3 focus:ring-accent/15 {errors.name
+							? 'border-error ring-error/15'
+							: 'border-border'}"
+						placeholder="Your name"
+						autocomplete="name"
+					/>
+					{#if errors.name}
+						<span class="text-[0.8rem] font-medium text-error">{errors.name}</span>
+					{/if}
 				</div>
-			{/if}
 
-			<div class="form-group">
-				<label for="contact-name" class="form-label">Name</label>
-				<input
-					type="text"
-					id="contact-name"
-					bind:value={name}
-					class="form-input"
-					class:form-error={errors.name}
-					placeholder="Your name"
-					autocomplete="name"
-				/>
-				{#if errors.name}
-					<span class="error-text">{errors.name}</span>
-				{/if}
-			</div>
+				<div class="flex flex-col gap-1.5">
+					<label for="contact-email" class="text-sm font-semibold text-text-secondary">Email</label>
+					<input
+						type="email"
+						id="contact-email"
+						bind:value={email}
+						class="rounded-xl border bg-bg-card p-[0.85rem_1rem] font-sans text-[0.95rem] text-text-primary transition-all duration-300 outline-none placeholder:text-text-muted focus:border-accent focus:ring-3 focus:ring-accent/15 {errors.email
+							? 'border-error ring-error/15'
+							: 'border-border'}"
+						placeholder="you@example.com"
+						autocomplete="email"
+					/>
+					{#if errors.email}
+						<span class="text-[0.8rem] font-medium text-error">{errors.email}</span>
+					{/if}
+				</div>
 
-			<div class="form-group">
-				<label for="contact-email" class="form-label">Email</label>
-				<input
-					type="email"
-					id="contact-email"
-					bind:value={email}
-					class="form-input"
-					class:form-error={errors.email}
-					placeholder="you@example.com"
-					autocomplete="email"
-				/>
-				{#if errors.email}
-					<span class="error-text">{errors.email}</span>
-				{/if}
-			</div>
+				<div class="flex flex-col gap-1.5">
+					<label for="contact-message" class="text-sm font-semibold text-text-secondary"
+						>Message</label
+					>
+					<textarea
+						id="contact-message"
+						bind:value={message}
+						class="min-h-[120px] resize-y rounded-xl border bg-bg-card p-[0.85rem_1rem] font-sans text-[0.95rem] text-text-primary transition-all duration-300 outline-none placeholder:text-text-muted focus:border-accent focus:ring-3 focus:ring-accent/15 {errors.message
+							? 'border-error ring-error/15'
+							: 'border-border'}"
+						placeholder="What's on your mind?"
+						rows="5"
+					></textarea>
+					{#if errors.message}
+						<span class="text-[0.8rem] font-medium text-error">{errors.message}</span>
+					{/if}
+				</div>
 
-			<div class="form-group">
-				<label for="contact-message" class="form-label">Message</label>
-				<textarea
-					id="contact-message"
-					bind:value={message}
-					class="form-input form-textarea"
-					class:form-error={errors.message}
-					placeholder="What's on your mind?"
-					rows="5"
-				></textarea>
-				{#if errors.message}
-					<span class="error-text">{errors.message}</span>
-				{/if}
-			</div>
-
-			<button type="submit" class="submit-btn" disabled={sending} id="contact-submit-btn">
-				{#if sending}
-					Sending...
-				{:else}
-					Send Message
-					<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-				{/if}
-			</button>
-		</form>
+				<button
+					type="submit"
+					class="inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl border-none bg-accent p-[0.9rem_2rem] font-sans text-base font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-accent-light hover:shadow-[0_8px_25px_var(--color-accent-glow)] disabled:cursor-not-allowed disabled:opacity-60"
+					disabled={sending}
+					id="contact-submit-btn"
+				>
+					{#if sending}
+						Sending...
+					{:else}
+						Send Message
+						<Send size={18} />
+					{/if}
+				</button>
+			</form>
+		</div>
 	</div>
 </section>
-
-<style>
-	.contact-inner {
-		max-width: 600px;
-		margin: 0 auto;
-	}
-
-	.section-header {
-		display: flex;
-		align-items: center;
-		gap: 1rem;
-		margin-bottom: 1.5rem;
-	}
-
-	.section-number {
-		font-family: var(--font-mono);
-		font-size: 1rem;
-		color: var(--color-accent);
-		font-weight: 600;
-	}
-
-	.section-title {
-		font-size: clamp(1.5rem, 4vw, 2rem);
-		font-weight: 800;
-		white-space: nowrap;
-	}
-
-	:global([data-theme='light']) .section-title {
-		color: var(--color-light-text-primary);
-	}
-
-	.section-line {
-		flex: 1;
-		height: 1px;
-		background: var(--color-border);
-	}
-
-	:global([data-theme='light']) .section-line {
-		background: var(--color-light-border);
-	}
-
-	.contact-intro {
-		margin-bottom: 2.5rem;
-	}
-
-	.contact-intro p {
-		color: var(--color-text-secondary);
-		font-size: 1.05rem;
-		line-height: 1.7;
-	}
-
-	:global([data-theme='light']) .contact-intro p {
-		color: var(--color-light-text-secondary);
-	}
-
-	.contact-form {
-		display: flex;
-		flex-direction: column;
-		gap: 1.5rem;
-	}
-
-	.form-group {
-		display: flex;
-		flex-direction: column;
-		gap: 0.4rem;
-	}
-
-	.form-label {
-		font-size: 0.875rem;
-		font-weight: 600;
-		color: var(--color-text-secondary);
-	}
-
-	:global([data-theme='light']) .form-label {
-		color: var(--color-light-text-secondary);
-	}
-
-	.form-input {
-		padding: 0.85rem 1rem;
-		background: var(--color-bg-card);
-		border: 1px solid var(--color-border);
-		border-radius: 10px;
-		color: var(--color-text-primary);
-		font-size: 0.95rem;
-		font-family: var(--font-sans);
-		transition: all 0.3s ease;
-		outline: none;
-	}
-
-	.form-input:focus {
-		border-color: var(--color-accent);
-		box-shadow: 0 0 0 3px var(--color-accent-glow);
-	}
-
-	.form-input::placeholder {
-		color: var(--color-text-muted);
-	}
-
-	.form-error {
-		border-color: var(--color-error) !important;
-	}
-
-	.form-error:focus {
-		box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2) !important;
-	}
-
-	:global([data-theme='light']) .form-input {
-		background: var(--color-light-bg-card);
-		border-color: var(--color-light-border);
-		color: var(--color-light-text-primary);
-	}
-
-	.form-textarea {
-		resize: vertical;
-		min-height: 120px;
-	}
-
-	.error-text {
-		font-size: 0.8rem;
-		color: var(--color-error);
-		font-weight: 500;
-	}
-
-	.submit-btn {
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		gap: 0.5rem;
-		padding: 0.9rem 2rem;
-		background: var(--color-accent);
-		color: white;
-		border: none;
-		border-radius: 10px;
-		font-size: 1rem;
-		font-weight: 600;
-		cursor: pointer;
-		transition: all 0.3s ease;
-		font-family: var(--font-sans);
-	}
-
-	.submit-btn:hover:not(:disabled) {
-		background: var(--color-accent-light);
-		transform: translateY(-2px);
-		box-shadow: 0 8px 25px var(--color-accent-glow);
-	}
-
-	.submit-btn:disabled {
-		opacity: 0.6;
-		cursor: not-allowed;
-	}
-
-	.success-msg {
-		display: flex;
-		align-items: center;
-		gap: 0.75rem;
-		padding: 1rem 1.25rem;
-		background: rgba(16, 185, 129, 0.1);
-		border: 1px solid rgba(16, 185, 129, 0.3);
-		border-radius: 10px;
-		color: var(--color-success);
-		font-weight: 500;
-	}
-
-	.success-icon {
-		font-size: 1.25rem;
-	}
-</style>

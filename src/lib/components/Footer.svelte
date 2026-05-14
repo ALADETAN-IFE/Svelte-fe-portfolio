@@ -3,93 +3,36 @@
 
 	const socialLinks = [
 		{ label: 'GitHub', href: 'https://github.com/ALADETAN-IFE' },
-		{ label: 'Dev.to', href: 'https://dev.to/ifecodes' },
-		{ label: 'X', href: 'https://x.com/ifecodes' },
-		{ label: 'Instagram', href: 'https://instagram.com/ifecodes' }
+		{
+			label: 'LinkedIn',
+			href: 'https://www.linkedin.com/in/fortune-ife-aladetan-458ab136a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app`'
+		},
+		{ label: 'Portfolio', href: 'https://www.ifecodes.xyz' },
+		{ label: 'X', href: 'https://x.com/IfeCodes_' },
+		{ label: 'Instagram', href: 'https://instagram.com/IfeCodes_' }
 	];
 </script>
 
-<footer class="footer" aria-label="Footer">
-	<div class="footer-inner">
-		<div class="footer-links">
+<footer class="border-t border-border p-[2.5rem_1.5rem]" aria-label="Footer">
+	<div class="mx-auto flex max-w-250 flex-col items-center gap-5">
+		<div class="flex flex-wrap justify-center gap-6">
 			{#each socialLinks as link}
-				<a href={link.href} target="_blank" rel="noopener noreferrer" class="footer-link">{link.label}</a>
+				<a
+					href={link.href}
+					target="_blank"
+					rel="noopener noreferrer"
+					class="text-sm font-medium text-text-muted no-underline transition-colors duration-200 hover:text-accent-light"
+					>{link.label}</a
+				>
 			{/each}
 		</div>
 
-		<div class="footer-divider"></div>
+		<div class="h-px w-[60px] bg-border"></div>
 
-		<p class="footer-credit">
-			Built with <span class="accent">SvelteKit</span> by <span class="accent">IfeCodes</span> &copy; {currentYear}
+		<p class="text-center font-mono text-[0.8rem] text-text-muted">
+			Built with <span class="font-semibold text-accent-light">SvelteKit</span> by
+			<span class="font-semibold text-accent-light">IfeCodes</span>
+			&copy;{currentYear}
 		</p>
 	</div>
 </footer>
-
-<style>
-	.footer {
-		padding: 2.5rem 1.5rem;
-		border-top: 1px solid var(--color-border);
-	}
-
-	:global([data-theme='light']) .footer {
-		border-top-color: var(--color-light-border);
-	}
-
-	.footer-inner {
-		max-width: 1000px;
-		margin: 0 auto;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		gap: 1.25rem;
-	}
-
-	.footer-links {
-		display: flex;
-		gap: 1.5rem;
-		flex-wrap: wrap;
-		justify-content: center;
-	}
-
-	.footer-link {
-		color: var(--color-text-muted);
-		text-decoration: none;
-		font-size: 0.875rem;
-		font-weight: 500;
-		transition: color 0.2s;
-	}
-
-	.footer-link:hover {
-		color: var(--color-accent-light);
-	}
-
-	:global([data-theme='light']) .footer-link {
-		color: var(--color-light-text-muted);
-	}
-
-	.footer-divider {
-		width: 60px;
-		height: 1px;
-		background: var(--color-border);
-	}
-
-	:global([data-theme='light']) .footer-divider {
-		background: var(--color-light-border);
-	}
-
-	.footer-credit {
-		font-size: 0.8rem;
-		color: var(--color-text-muted);
-		text-align: center;
-		font-family: var(--font-mono);
-	}
-
-	:global([data-theme='light']) .footer-credit {
-		color: var(--color-light-text-muted);
-	}
-
-	.accent {
-		color: var(--color-accent-light);
-		font-weight: 600;
-	}
-</style>
