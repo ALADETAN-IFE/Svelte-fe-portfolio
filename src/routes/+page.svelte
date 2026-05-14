@@ -30,7 +30,7 @@
 
 {#if data.error}
 	<section id="projects" class="section-padding" aria-label="Projects section">
-		<div class="mx-auto max-w-[500px] text-center">
+		<div class="mx-auto max-w-125 text-center">
 			<div
 				class="flex flex-col items-center gap-4 rounded-2xl border border-border bg-bg-card p-[3rem_2rem]"
 			>

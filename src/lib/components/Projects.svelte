@@ -100,6 +100,7 @@
 		{:else}
 			<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
 				{#each filteredProjects as project (project.projectId)}
+					{@const ProjectIcon = getProjectTypeIcon(project.type)}
 					<article
 						class="project-card flex flex-col overflow-hidden rounded-2xl border border-border bg-bg-card shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-accent hover:shadow-[0_12px_40px_var(--color-accent-glow)]"
 						style="opacity: 0;"
@@ -114,7 +115,7 @@
 								/>
 								{#if project.featured}
 									<span
-										class="absolute top-3 right-3 rounded-md bg-accent/90 px-3 py-1 text-[0.7rem] font-semibold text-white backdrop-blur-[4px]"
+										class="absolute top-3 right-3 rounded-md bg-accent/90 px-3 py-1 text-[0.7rem] font-semibold text-white backdrop-blur-xs"
 										><Star size={12} class="mr-1 inline-block" />Featured</span
 									>
 								{/if}
@@ -124,12 +125,11 @@
 								class="relative flex h-45 items-center justify-center overflow-hidden bg-bg-tertiary"
 							>
 								<div class="text-accent-light opacity-40">
-									{@const ProjectIcon = getProjectTypeIcon(project.type)}
 									<ProjectIcon size={46} strokeWidth={1.8} />
 								</div>
 								{#if project.featured}
 									<span
-										class="absolute top-3 right-3 rounded-md bg-accent/90 px-3 py-1 text-[0.7rem] font-semibold text-white backdrop-blur-[4px]"
+										class="absolute top-3 right-3 rounded-md bg-accent/90 px-3 py-1 text-[0.7rem] font-semibold text-white backdrop-blur-xs"
 										><Star size={12} class="mr-1 inline-block" />Featured</span
 									>
 								{/if}
