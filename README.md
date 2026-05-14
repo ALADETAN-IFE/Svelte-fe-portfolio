@@ -1,42 +1,78 @@
-# sv
+# IfeCodes Portfolio (SvelteKit)
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+Personal portfolio website built with SvelteKit, Tailwind CSS, and GSAP.
 
-## Creating a project
+## Stack
 
-If you're seeing this, you've probably already done this step. Congrats!
+- SvelteKit (Svelte 5 + TypeScript)
+- Tailwind CSS v4
+- GSAP + ScrollTrigger
+- Lucide icons + custom SVG icons
+- Vercel adapter
+
+## Features
+
+- Hero section with animated particle canvas background
+- Skills grid with category and technology icons
+- Filterable projects section
+- Interactive terminal section
+- Contact form with validation and mailto fallback
+- Responsive layout for mobile and desktop
+
+## Development
+
+Setup sveltekit project:
 
 ```sh
 # create a new project
 npx sv create my-app
 ```
 
-To recreate this project with the same configuration:
+Install dependencies:
 
 ```sh
-# recreate this project
-pnpm dlx sv@0.15.3 create --template minimal --types ts --add prettier eslint tailwindcss="plugins:none" sveltekit-adapter="adapter:vercel" --install pnpm ./
+pnpm install
 ```
 
-## Developing
-
-Once you've created a project and installed dependencies with `pnpm install` (or `pnpm install` or `yarn`), start a development server:
+Start the dev server:
 
 ```sh
 pnpm dev
-
-# or start the server and open the app in a new browser tab
-pnpm run dev -- --open
 ```
 
-## Building
-
-To create a production version of your app:
+Run type and Svelte checks:
 
 ```sh
-pnpm run build
+pnpm check
 ```
 
-You can preview the production build with `pnpm run preview`.
+Lint and formatting checks:
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+```sh
+pnpm lint
+```
+
+## Build
+
+Create a production build:
+
+```sh
+pnpm build
+```
+
+Preview production build locally:
+
+```sh
+pnpm preview
+```
+
+## Live Demo
+
+- Vercel deployment: [Svelete FE Portfolio](https://svelte-fe-portfolio.vercel.app/)
+
+## Author
+
+- Name: Fortune Ife Aladetan
+- Email: [contact@ifecodes.xyz](mailto:fortuneifealadetan01@gmail.com)
+- GitHub: [ALADETAN-IFE](https://github.com/ALADETAN-IFE)
+- Portfolio: [ifecodes.xyz](https://www.ifecodes.xyz)
