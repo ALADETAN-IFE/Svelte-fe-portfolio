@@ -41,4 +41,4 @@ export default defineConfig(
 		// 'svelte/button-has-type': 'error'
 		rules: {}
 	}
-);
+); 
