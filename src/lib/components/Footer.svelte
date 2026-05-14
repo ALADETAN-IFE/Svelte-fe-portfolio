@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { resolve } from '$app/paths';
 
 	const currentYear = new Date().getFullYear();
 
@@ -20,7 +19,7 @@
 		<div class="flex flex-wrap justify-center gap-6">
 			{#each socialLinks as link (link.label)}
 				<a
-					href={resolve(link.href)}
+					href={link.href}
 					target="_blank"
 					rel="noopener noreferrer"
 					class="text-sm font-medium text-text-muted no-underline transition-colors duration-200 hover:text-accent-light"

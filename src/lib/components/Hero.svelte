@@ -233,7 +233,7 @@
 				<ArrowRight size={18} />
 			</a>
 			<a
-				href={resolve('https://www.ifecodes.xyz')}
+				href='https://www.ifecodes.xyz'
 				class="hero-cta inline-flex cursor-pointer items-center gap-2 rounded-xl border border-accent bg-transparent px-7 py-3 text-[0.95rem] font-semibold text-accent-light no-underline transition-all duration-300 hover:-translate-y-0.5 hover:bg-accent/8"
 				style="opacity: 0;"
 				target="_blank"
@@ -247,7 +247,7 @@
 		<div class="flex justify-center gap-4">
 			{#each socialLinks as link (link.label)}
 				<a
-					href={resolve(link.href)}
+					href={link.href}
 					class="hero-social flex items-center justify-center rounded-xl border border-border p-2.5 text-text-muted transition-all duration-300 hover:-translate-y-0.5 hover:border-accent hover:text-accent-light hover:shadow-[0_4px_15px_var(--color-accent-glow)]"
 					style="opacity: 0;"
 					target="_blank"

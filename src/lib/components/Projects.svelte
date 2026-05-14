@@ -7,7 +7,6 @@
 	import Star from '@lucide/svelte/icons/star';
 	import Github from './icons/Github.svelte';
 	import ExternalLink from '@lucide/svelte/icons/external-link';
-	import { resolve } from '$app/paths';
 	import type { Project } from '$lib/types/project';
 
 	interface Props {
@@ -169,7 +168,7 @@
 							<div class="mt-auto flex gap-3">
 								{#if project.githubUrl}
 									<a
-										href={resolve(project.githubUrl)}
+										href={project.githubUrl}
 										target="_blank"
 										rel="noopener noreferrer"
 										class="flex items-center gap-1.5 rounded-lg border border-border px-4 py-2 text-[0.8rem] font-medium text-text-secondary no-underline transition-all duration-200 hover:border-accent hover:text-accent-light"
@@ -181,7 +180,7 @@
 								{/if}
 								{#if project.liveUrl}
 									<a
-										href={resolve(project.liveUrl)}
+										href={project.liveUrl}
 										target="_blank"
 										rel="noopener noreferrer"
 										class="flex items-center gap-1.5 rounded-lg border border-accent bg-accent px-4 py-2 text-[0.8rem] font-medium text-white no-underline shadow-sm transition-all duration-200 hover:bg-accent-light"
