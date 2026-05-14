@@ -10,18 +10,39 @@
 	let activeSection = $state('');
 
 	const navLinks = [
-		{ label: 'About', href: '/#about' },
-		{ label: 'Skills', href: '/#skills' },
-		{ label: 'Projects', href: '/#projects' },
-		{ label: 'Terminal', href: '/#terminal' },
-		{ label: 'Contact', href: '/#contact' }
-	];
+		{ label: 'About', href: '/#about', section: 'about' },
+		{ label: 'Skills', href: '/#skills', section: 'skills' },
+		{ label: 'Projects', href: '/#projects', section: 'projects' },
+		{ label: 'Terminal', href: '/#terminal', section: 'terminal' },
+		{ label: 'Contact', href: '/#contact', section: 'contact' }
+	] as const;
+
+	function isLinkActive(section: string): boolean {
+		return activeSection === section || (activeSection === 'hero' && section === 'about');
+	}
 
 	onMount(() => {
+		const syncSection = () => {
+			const hash = window.location.hash.slice(1);
+			if (!hash) {
+				activeSection = 'hero';
+				return;
+			}
+
+			const target = document.getElementById(hash);
+			if (!target) return;
+
+			activeSection = hash;
+			requestAnimationFrame(() => {
+				target.scrollIntoView({ behavior: 'auto', block: 'start' });
+			});
+		};
+
 		const handleScroll = () => {
 			scrolled = window.scrollY > 50;
 		};
 		window.addEventListener('scroll', handleScroll, { passive: true });
+		window.addEventListener('hashchange', syncSection);
 
 		const observerOptions = {
 			root: null,
@@ -39,9 +60,11 @@
 
 		const sections = document.querySelectorAll('section[id], #hero');
 		sections.forEach((section) => observer.observe(section));
+		syncSection();
 
 		return () => {
 			window.removeEventListener('scroll', handleScroll);
+			window.removeEventListener('hashchange', syncSection);
 			sections.forEach((section) => observer.unobserve(section));
 		};
 	});
@@ -73,8 +96,7 @@
 			{#each navLinks as link (link.label)}
 				<a
 					href={resolve(link.href)}
-					class="relative text-sm font-medium text-text-secondary no-underline transition-colors duration-200 after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:bg-accent after:transition-[width] after:duration-300 after:content-[''] hover:text-accent-light {activeSection ===
-					link.href.substring(1)
+					class="relative text-sm font-medium text-text-secondary no-underline transition-colors duration-200 after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:bg-accent after:transition-[width] after:duration-300 after:content-[''] hover:text-accent-light {isLinkActive(link.section)
 						? 'text-accent-light after:w-full'
 						: 'after:w-0 hover:after:w-full'}"
 					role="menuitem">{link.label}</a
@@ -129,8 +151,7 @@
 			{#each navLinks as link (link.label)}
 				<a
 					href={resolve(link.href)}
-					class="py-3 text-base font-medium text-text-secondary no-underline transition-colors duration-200 hover:text-accent-light {activeSection ===
-					link.href.substring(1)
+					class="py-3 text-base font-medium text-text-secondary no-underline transition-colors duration-200 hover:text-accent-light {isLinkActive(link.section)
 						? 'text-accent-light'
 						: ''}"
 					role="menuitem"
