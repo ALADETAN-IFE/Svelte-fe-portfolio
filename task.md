@@ -44,7 +44,7 @@ Think:
 
 ### 🧩 Required Features
 
-#### 1️⃣ Built with Svelte or SvelteKit
+#### 1⃣ Built with Svelte or SvelteKit
 
 You must use:
 
@@ -64,7 +64,7 @@ Bonus:
 - static generation
 - progressive enhancement
 
-#### 2️⃣ Hero Section
+#### 2⃣ Hero Section
 
 Your landing section must immediately impress.
 
@@ -90,7 +90,7 @@ Bonus:
 - cursor interactions
 - shader effects
 
-#### 3️⃣ Projects Showcase
+#### 3⃣ Projects Showcase
 
 Display your projects dynamically.
 
@@ -116,7 +116,7 @@ Bonus:
 - cinematic project transitions
 - expandable project modals
 
-#### 4️⃣ Smooth Animations & Transitions
+#### 4⃣ Smooth Animations & Transitions
 
 Animation quality is heavily evaluated.
 
@@ -140,7 +140,7 @@ Suggested tools:
 - Motion One
 - native Svelte transitions
 
-#### 5️⃣ Responsive & Adaptive Design
+#### 5⃣ Responsive & Adaptive Design
 
 Your portfolio must work beautifully on:
 
@@ -155,7 +155,7 @@ Requirements:
 - touch-friendly interactions
 - accessible navigation
 
-#### 6️⃣ Performance Optimization
+#### 6⃣ Performance Optimization
 
 Your portfolio should load fast and remain smooth.
 
@@ -174,7 +174,7 @@ Bonus:
 - route-level code splitting
 - reduced motion support
 
-#### 7️⃣ Accessibility
+#### 7⃣ Accessibility
 
 Accessibility is required.
 
@@ -192,7 +192,7 @@ Bonus:
 - skip navigation links
 - motion accessibility controls
 
-#### 8️⃣ Contact Section
+#### 8⃣ Contact Section
 
 Include a functional contact experience.
 
@@ -208,7 +208,7 @@ Optional:
 - email sending integration
 - scheduling links
 
-#### 9️⃣ Theme Support
+#### 9⃣ Theme Support
 
 Your portfolio must support:
 
