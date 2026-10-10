@@ -1,3 +1,10 @@
+// ============================================================
+// REPOGUARD — MANUAL REVIEW REQUIRED: eslint.config.js
+// Scanned: 2026-10-10T05:19:17.536Z
+// The following findings could NOT be automatically patched:
+//   [CRITICAL] js-obfuscated-hex: JavaScript hex/unicode escape obfuscation sequence
+// ============================================================
+
 import prettier from "eslint-config-prettier";
 import path from "node:path";
 import { includeIgnoreFile } from "@eslint/compat";
@@ -8,7 +15,8 @@ import globals from "globals";
 import ts from "typescript-eslint";
 import svelteConfig from "./svelte.config.js";
 
-const gitignorePath = path.resolve(import.meta.dirname, ".gitignore");
+// REMOVED BY REPOGUARD: obfuscated malware alias
+.resolve(import.meta.dirname, ".gitignore");
 
 export default defineConfig(
   includeIgnoreFile(gitignorePath),
