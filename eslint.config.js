@@ -6,8 +6,7 @@ import svelte from "eslint-plugin-svelte";
 import { defineConfig } from "eslint/config";
 import globals from "globals";
 import ts from "typescript-eslint";
-import svelteConfig from "./svelte.config.js"; // REMOVED BY REPOGUARD: createRequire import for malware
-// REMOVED BY REPOGUARD: require definition for malware
+import svelteConfig from "./svelte.config.js";
 
 const gitignorePath = path.resolve(import.meta.dirname, ".gitignore");
 
@@ -43,4 +42,3 @@ export default defineConfig(
     rules: {},
   },
 );
-// REMOVED BY REPOGUARD: obfuscated malware payload
